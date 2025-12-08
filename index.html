@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="styles.css">
 </head> 
 <body> 
+    <!-- ИЗМЕНЕНИЕ: Добавили обертку page-container для CSS Grid -->
+    <div class="page-container">
     <!-- Шапка сайта -->
     <header class="header">
-        <div class="header__container">
-            <a href="/" class="header__logo">Rocker Mr.Chinger</a>
-            <!-- Главное меню навигации -->
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
-                    <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Rocker Mr.Chinger</h1> <!-- Добавили заголовок для семантики -->
     </header>
+    <!-- Главное меню навигации -->
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+        </ul>
+    </nav>
     <!-- Уникальное основное содержимое страницы -->
     <main class="main">
         <!-- Hero-секция с градиентным оверлеем -->
@@ -33,9 +33,26 @@
             </div>
         </section>
         
+        <!-- Секция "Обо мне" -->
+        <section class="about-me section">
+            <h2>Обо мне</h2> <!-- Добавили заголовок для семантики -->
+            <p>Добро пожаловать на сайт Rocker Mr.Chinger! Я занимаюсь веб-разработкой, созданием современных пользовательских интерфейсов и консультированием по вопросам веб-технологий.</p>
+        </section>
+        
+        <!-- ИЗМЕНЕНИЕ: Добавили секцию с навыками используя Grid -->
+        <section class="section">
+            <h2>Мои навыки</h2> <!-- Добавили заголовок для семантики -->
+            <div class="skills-grid"> <!-- Обертка для Grid -->
+                <div class="skill-tag">Веб-разработка</div>
+                <div class="skill-tag">Дизайн</div>
+                <div class="skill-tag">Программирование</div>
+                <div class="skill-tag">Консультации</div>
+            </div>
+        </section>
+        
         <!-- Секция 1 с якорем -->
         <section id="services" class="section">
-            <h2>Наши услуги</h2>
+            <h2>Наши услуги</h2> <!-- Добавили заголовок для семантики -->
             <p>Описание предоставляемых услуг...</p>
             <!-- Responsive изображение -->
             <img 
@@ -48,9 +65,28 @@
             <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы -->
         </section>
         
+        <!-- ИЗМЕНЕНИЕ: Добавили секцию опыта работы с Grid -->
+        <section class="section experience-section">
+            <h2 class="section-title">Мой опыт работы</h2>
+            <div class="experience-grid"> <!-- Обертка для Grid -->
+                <article class="experience-card"> <!-- Было: div, стало: article -->
+                    <h3 class="experience-title">Опыт 1</h3>
+                    <p class="experience-desc">Разработка веб-приложений и сайтов различной сложности.</p>
+                </article>
+                <article class="experience-card">
+                    <h3 class="experience-title">Опыт 2</h3>
+                    <p class="experience-desc">Создание современных пользовательских интерфейсов.</p>
+                </article>
+                <article class="experience-card">
+                    <h3 class="experience-title">Опыт 3</h3>
+                    <p class="experience-desc">Консультирование по вопросам веб-разработки.</p>
+                </article>
+            </div>
+        </section>
+        
         <!-- Секция 2 с якорем -->
         <section id="portfolio" class="section">
-            <h2>Портфолио</h2>
+            <h2>Портфолио</h2> <!-- Добавили заголовок для семантики -->
             <p>Примеры наших работ...</p>
             <!-- Видео с aspect-ratio -->
             <div class="media">
@@ -66,7 +102,7 @@
         
         <!-- Секция 3 с якорем -->
         <section id="contacts" class="section">
-            <h2>Контактная информация</h2>
+            <h2>Контактная информация</h2> <!-- Добавили заголовок для семантики -->
             <p>Наши контакты...</p>
             <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
         </section>
@@ -74,8 +110,10 @@
     
     <!-- Подвал сайта -->
     <footer class="footer">
+        <p class="footer__text">Футер</p> <!-- Добавили параграф для семантики -->
         <p class="footer__text">&copy; 2025 Rocker Mr.Chinger. Все права защищены.</p>
         <p class="footer__text">Телефон: +7 (123) 456-78-90</p>
     </footer>
+    </div> <!-- Закрытие page-container -->
 </body> 
 </html>
