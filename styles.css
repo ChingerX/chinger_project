@@ -21,6 +21,12 @@ label {
     margin: 0.5rem 0 0.25rem;
 }
 
+/* Стиль для звездочки обязательного поля */
+.required {
+    color: #b00020;
+    font-weight: bold;
+}
+
 input, select, textarea, button {
     width: 100%;
     max-width: 480px;

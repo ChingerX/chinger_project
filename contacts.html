@@ -45,24 +45,22 @@
             <form id="contactForm" method="dialog" novalidate>
                 <h2 id="dialogTitle">Форма обратной связи</h2>
                 
-                <label for="email">Email <span aria-label="обязательное поле">*</span></label>
+                <label for="email">Email <span class="required">*</span></label>
                 <input 
                     type="email" 
                     id="email" 
                     name="email" 
                     required 
-                    aria-required="true"
                     aria-describedby="email-error"
                 >
                 <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                 
-                <label for="phone">Телефон <span aria-label="обязательное поле">*</span></label>
+                <label for="phone">Телефон <span class="required">*</span></label>
                 <input 
                     type="tel" 
                     id="phone" 
                     name="phone" 
                     required 
-                    aria-required="true"
                     pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}"
                     title="Формат: +7 (XXX) XXX-XX-XX"
                     placeholder="+7 (XXX) XXX-XX-XX"
@@ -71,23 +69,21 @@
                 <span id="phone-hint" class="hint">Формат: +7 (XXX) XXX-XX-XX</span>
                 <span id="phone-error" class="error-message" role="alert" aria-live="polite"></span>
                 
-                <label for="date">Дата <span aria-label="обязательное поле">*</span></label>
+                <label for="date">Дата <span class="required">*</span></label>
                 <input 
                     type="date" 
                     id="date" 
                     name="date" 
                     required 
-                    aria-required="true"
                     aria-describedby="date-error"
                 >
                 <span id="date-error" class="error-message" role="alert" aria-live="polite"></span>
                 
-                <label for="subject">Тема обращения <span aria-label="обязательное поле">*</span></label>
+                <label for="subject">Тема обращения <span class="required">*</span></label>
                 <select 
                     id="subject" 
                     name="subject" 
                     required 
-                    aria-required="true"
                     aria-describedby="subject-error"
                 >
                     <option value="">Выберите тему</option>
@@ -98,12 +94,11 @@
                 </select>
                 <span id="subject-error" class="error-message" role="alert" aria-live="polite"></span>
                 
-                <label for="message">Сообщение <span aria-label="обязательное поле">*</span></label>
+                <label for="message">Сообщение <span class="required">*</span></label>
                 <textarea 
                     id="message" 
                     name="message" 
                     required 
-                    aria-required="true"
                     rows="5"
                     aria-describedby="message-error"
                 ></textarea>
