@@ -1,0 +1,144 @@
+/**
+ * БАЗА: читаемость и предсказуемость размеров
+ * box-sizing: border-box обеспечивает корректный расчет размеров элементов
+ */
+* { box-sizing: border-box; }
+
+/* Глобальные стили */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* Формы: размеры, отступы, визуальный порядок */
+label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    max-width: 480px;
+    padding: .5rem .75rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+/* Кнопка по умолчанию */
+button, [type="submit"] {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Состояния: клавиатура/мышь/ошибки */
+:where(input, select, textarea, button):focus-visible {
+    outline: 2px solid #0a84ff;
+    outline-offset: 2px;
+}
+
+button:hover {
+    filter: brightness(0.95);
+}
+
+:disabled, [aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* Подсветка ошибочных полей (установите aria-invalid="true") */
+[aria-invalid="true"] {
+    border-color: #b00020;
+}
+
+/* Стили для модалки <dialog> */
+dialog {
+    padding: 2rem;
+    border: none;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+dialog h2 {
+    margin-top: 0;
+}
+
+/* Сообщения об ошибках и подсказки */
+.error-message {
+    display: block;
+    color: #b00020;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    min-height: 1.25rem;
+}
+
+.hint {
+    display: block;
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Сообщение об успехе */
+.success-message {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: #4caf50;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.success-message p {
+    margin: 0;
+}
+
+/* Действия формы */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-actions button {
+    flex: 1;
+}
+
+/* Кнопка открытия формы */
+button[type="button"]:not([id="closeDialog"]) {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button[type="button"]:not([id="closeDialog"]):hover {
+    filter: brightness(0.95);
+}
+
+button[type="button"][id="closeDialog"] {
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #c8c8c8;
+}
+
