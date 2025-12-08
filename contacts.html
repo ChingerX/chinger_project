@@ -9,117 +9,141 @@
     <link rel="stylesheet" href="styles.css">
 </head> 
 <body> 
-    <header> 
-        <a href="/">Логотип или название сайта</a> 
-        <!-- Главное меню навигации --> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Главная</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contacts.html">Контакты</a></li> 
-            </ul> 
-        </nav> 
-    </header> 
-    <main>
-        <!-- Простые "хлебные крошки" --> 
-        <nav aria-label="Хлебные крошки"> 
-            <a href="index.html">Главная</a> → 
-            <span>Контакты</span> 
-        </nav> 
-        <h1>Наши контакты</h1> 
-        <section> 
-            <h2>Соц сети</h2> 
-            <p>Ссылки на соц сети...</p> 
-        </section> 
-        <section> 
-            <h2>Почта</h2> 
-            <p>Тут почта...</p> 
+    <header class="header">
+        <div class="header__container">
+            <a href="/" class="header__logo">Логотип или название сайта</a>
+            <!-- Главное меню навигации -->
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="contacts.html" class="nav__link nav__link--active">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <!-- Простые "хлебные крошки" -->
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ul class="breadcrumbs__list">
+                <li class="breadcrumbs__item">
+                    <a href="index.html" class="breadcrumbs__link">Главная</a>
+                    <span class="breadcrumbs__separator">→</span>
+                </li>
+                <li class="breadcrumbs__item">
+                    <span class="breadcrumbs__current">Контакты</span>
+                </li>
+            </ul>
+        </nav>
+        <h1>Наши контакты</h1>
+        <section class="section">
+            <h2>Соц сети</h2>
+            <p>Ссылки на соц сети...</p>
         </section>
-        <section> 
-            <h2>Связаться с нами</h2> 
-            <button id="openContactForm" type="button">Открыть форму обратной связи</button> 
+        <section class="section">
+            <h2>Почта</h2>
+            <p>Тут почта...</p>
+        </section>
+        <section class="section">
+            <h2>Связаться с нами</h2>
+            <button id="openContactForm" type="button" class="button button--primary">Открыть форму обратной связи</button>
         </section>
         
         <!-- Модалка с формой обратной связи -->
-        <dialog id="contactDialog" aria-labelledby="dialogTitle">
-            <form id="contactForm" method="dialog" novalidate>
-                <h2 id="dialogTitle">Форма обратной связи</h2>
+        <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
+            <form id="contactForm" class="form" method="dialog" novalidate>
+                <h2 id="dialogTitle" class="modal__title">Форма обратной связи</h2>
                 
-                <label for="email">Email <span class="required">*</span></label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    required 
-                    aria-describedby="email-error"
-                >
-                <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+                <div class="form__field">
+                    <label for="email" class="form__label">Email <span class="form__required">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form__input"
+                        required 
+                        aria-describedby="email-error"
+                    >
+                    <span id="email-error" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
                 
-                <label for="phone">Телефон <span class="required">*</span></label>
-                <input 
-                    type="tel" 
-                    id="phone" 
-                    name="phone" 
-                    required 
-                    pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}"
-                    title="Формат: +7 (XXX) XXX-XX-XX"
-                    placeholder="+7 (XXX) XXX-XX-XX"
-                    aria-describedby="phone-hint phone-error"
-                >
-                <span id="phone-hint" class="hint">Формат: +7 (XXX) XXX-XX-XX</span>
-                <span id="phone-error" class="error-message" role="alert" aria-live="polite"></span>
+                <div class="form__field">
+                    <label for="phone" class="form__label">Телефон <span class="form__required">*</span></label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form__input"
+                        required 
+                        pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}"
+                        title="Формат: +7 (XXX) XXX-XX-XX"
+                        placeholder="+7 (XXX) XXX-XX-XX"
+                        aria-describedby="phone-hint phone-error"
+                    >
+                    <span id="phone-hint" class="form__hint">Формат: +7 (XXX) XXX-XX-XX</span>
+                    <span id="phone-error" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
                 
-                <label for="date">Дата <span class="required">*</span></label>
-                <input 
-                    type="date" 
-                    id="date" 
-                    name="date" 
-                    required 
-                    aria-describedby="date-error"
-                >
-                <span id="date-error" class="error-message" role="alert" aria-live="polite"></span>
+                <div class="form__field">
+                    <label for="date" class="form__label">Дата <span class="form__required">*</span></label>
+                    <input 
+                        type="date" 
+                        id="date" 
+                        name="date" 
+                        class="form__input"
+                        required 
+                        aria-describedby="date-error"
+                    >
+                    <span id="date-error" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
                 
-                <label for="subject">Тема обращения <span class="required">*</span></label>
-                <select 
-                    id="subject" 
-                    name="subject" 
-                    required 
-                    aria-describedby="subject-error"
-                >
-                    <option value="">Выберите тему</option>
-                    <option value="question">Вопрос</option>
-                    <option value="complaint">Жалоба</option>
-                    <option value="suggestion">Предложение</option>
-                    <option value="other">Другое</option>
-                </select>
-                <span id="subject-error" class="error-message" role="alert" aria-live="polite"></span>
+                <div class="form__field">
+                    <label for="subject" class="form__label">Тема обращения <span class="form__required">*</span></label>
+                    <select 
+                        id="subject" 
+                        name="subject" 
+                        class="form__select"
+                        required 
+                        aria-describedby="subject-error"
+                    >
+                        <option value="">Выберите тему</option>
+                        <option value="question">Вопрос</option>
+                        <option value="complaint">Жалоба</option>
+                        <option value="suggestion">Предложение</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <span id="subject-error" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
                 
-                <label for="message">Сообщение <span class="required">*</span></label>
-                <textarea 
-                    id="message" 
-                    name="message" 
-                    required 
-                    rows="5"
-                    aria-describedby="message-error"
-                ></textarea>
-                <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
+                <div class="form__field">
+                    <label for="message" class="form__label">Сообщение <span class="form__required">*</span></label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form__textarea"
+                        required 
+                        rows="5"
+                        aria-describedby="message-error"
+                    ></textarea>
+                    <span id="message-error" class="form__error" role="alert" aria-live="polite"></span>
+                </div>
                 
-                <div class="form-actions">
-                    <button type="submit">Отправить</button>
-                    <button type="button" id="closeDialog">Закрыть</button>
+                <div class="form__actions">
+                    <button type="submit" class="button button--primary">Отправить</button>
+                    <button type="button" id="closeDialog" class="button button--secondary">Закрыть</button>
                 </div>
             </form>
         </dialog>
         
         <!-- Сообщение об успешной отправке -->
-        <div id="successMessage" class="success-message" role="alert" aria-live="polite" style="display: none;">
-            <p>Спасибо! Ваше сообщение успешно отправлено.</p>
-        </div> 
-    </main> 
-    <footer> 
-        <p>&copy; 2023 Название вашего сайта. Все права защищены.</p> 
-        <p>Телефон: +7 (123) 456-78-90</p> 
-    </footer> 
+        <div id="successMessage" class="success" role="alert" aria-live="polite" style="display: none;">
+            <p class="success__text">Спасибо! Ваше сообщение успешно отправлено.</p>
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2023 Название вашего сайта. Все права защищены.</p>
+        <p class="footer__text">Телефон: +7 (123) 456-78-90</p>
+    </footer>
     <script src="main.js"></script>
 </body> 
 </html>

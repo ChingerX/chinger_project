@@ -79,9 +79,9 @@ if (contactForm) {
     });
 }
 
-// Функция очистки сообщений об ошибках
+// Функция очистки сообщений об ошибках (БЭМ: .form__error)
 function clearErrorMessages() {
-    const errorMessages = contactForm?.querySelectorAll('.error-message');
+    const errorMessages = contactForm?.querySelectorAll('.form__error');
     errorMessages?.forEach(msg => {
         msg.textContent = '';
     });

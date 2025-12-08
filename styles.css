@@ -1,150 +1,460 @@
 /**
- * БАЗА: читаемость и предсказуемость размеров
- * box-sizing: border-box обеспечивает корректный расчет размеров элементов
+ * ТОКЕНЫ: CSS переменные для единообразия дизайна
+ * Используем только шкалу --space-* для отступов
  */
-* { box-sizing: border-box; }
+:root {
+    /* Цвета */
+    --color-primary: #0a84ff;
+    --color-primary-hover: #0071e3;
+    --color-error: #b00020;
+    --color-success: #4caf50;
+    --color-text: #1d1d1f;
+    --color-text-secondary: #666;
+    --color-border: #c8c8c8;
+    --color-bg: #fff;
+    --color-bg-secondary: #f5f5f5;
+    
+    /* Отступы (шкала --space-*) */
+    --space-xs: 0.25rem;   /* 4px */
+    --space-sm: 0.5rem;    /* 8px */
+    --space-md: 1rem;     /* 16px */
+    --space-lg: 1.5rem;   /* 24px */
+    --space-xl: 2rem;     /* 32px */
+    --space-2xl: 3rem;    /* 48px */
+    
+    /* Типографика */
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --line-height: 1.5;
+    
+    /* Радиусы */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Тени */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
 
-/* Глобальные стили */
-html, body {
+/**
+ * CSS RESET: минимальный сброс стилей
+ */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth; /* Плавный скролл для якорей */
+}
+
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
-/* Формы: размеры, отступы, визуальный порядок */
-label {
+/**
+ * БАЗОВАЯ ТИПОГРАФИКА
+ */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: var(--space-md);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0.5rem 0 0.25rem;
 }
 
-/* Стиль для звездочки обязательного поля */
-.required {
-    color: #b00020;
-    font-weight: bold;
+/**
+ * БЭМ: Блок HEADER
+ */
+.header {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md) var(--space-xl);
 }
 
-input, select, textarea, button {
-    width: 100%;
-    max-width: 480px;
-    padding: .5rem .75rem;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    background: #fff;
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Кнопка по умолчанию */
-button, [type="submit"] {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+.header__logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
 }
 
-/* Состояния: клавиатура/мышь/ошибки */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
+.header__logo:hover {
+    color: var(--color-primary);
+}
+
+/**
+ * БЭМ: Блок NAV (навигация)
+ */
+.nav {
+    display: flex;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+}
+
+/* .nav__item - элемент списка навигации, стили применяются через .nav__link */
+
+.nav__link {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav__link:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-primary);
+}
+
+.nav__link:focus-visible {
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
-button:hover {
+/* Активный пункт навигации */
+.nav__link--active {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+}
+
+.nav__link--active:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-bg);
+}
+
+/**
+ * БЭМ: Блок BREADCRUMBS (хлебные крошки)
+ */
+.breadcrumbs {
+    padding: var(--space-md) var(--space-xl);
+    background-color: var(--color-bg-secondary);
+}
+
+.breadcrumbs__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-sm);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumbs__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.breadcrumbs__link {
+    color: var(--color-text-secondary);
+}
+
+.breadcrumbs__link:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumbs__separator {
+    color: var(--color-text-secondary);
+}
+
+.breadcrumbs__current {
+    color: var(--color-text);
+}
+
+/**
+ * ЯКОРЯ: стилизация :target элементов
+ */
+:target {
+    scroll-margin-top: var(--space-xl);
+    background-color: rgba(10, 132, 255, 0.1);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    transition: background-color 0.3s;
+}
+
+/**
+ * БЭМ: Блок FORM (форма)
+ */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.form__required {
+    color: var(--color-error);
+    font-weight: bold;
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+    width: 100%;
+    max-width: 480px;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s;
+}
+
+.form__input:focus-visible,
+.form__select:focus-visible,
+.form__textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-color: var(--color-primary);
+}
+
+.form__input[aria-invalid="true"],
+.form__select[aria-invalid="true"],
+.form__textarea[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.form__textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form__hint {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-xs);
+}
+
+.form__error {
+    display: block;
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-xs);
+    min-height: 1.25rem;
+}
+
+.form__actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+/**
+ * БЭМ: Блок BUTTON (кнопка)
+ */
+.button {
+    padding: var(--space-sm) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.2s, filter 0.2s;
+}
+
+.button--primary {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+}
+
+.button--primary:hover {
     filter: brightness(0.95);
 }
 
-:disabled, [aria-disabled="true"] {
-    opacity: .6;
+.button--primary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.button--secondary {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.button--secondary:hover {
+    background-color: var(--color-border);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Подсветка ошибочных полей (установите aria-invalid="true") */
-[aria-invalid="true"] {
-    border-color: #b00020;
-}
-
-/* Стили для модалки <dialog> */
-dialog {
-    padding: 2rem;
+/**
+ * БЭМ: Блок MODAL (модалка)
+ */
+.modal {
+    padding: var(--space-xl);
     border: none;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     max-width: 600px;
     width: 90%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-md);
 }
 
-dialog::backdrop {
+.modal::backdrop {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(2px);
 }
 
-dialog h2 {
+.modal__title {
     margin-top: 0;
+    margin-bottom: var(--space-lg);
 }
 
-/* Сообщения об ошибках и подсказки */
-.error-message {
-    display: block;
-    color: #b00020;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    min-height: 1.25rem;
-}
-
-.hint {
-    display: block;
-    color: #666;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-/* Сообщение об успехе */
-.success-message {
+/**
+ * БЭМ: Блок SUCCESS (сообщение об успехе)
+ */
+.success {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
-    background: #4caf50;
-    color: #fff;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: var(--space-xl);
+    right: var(--space-xl);
+    background: var(--color-success);
+    color: var(--color-bg);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     z-index: 1000;
 }
 
-.success-message p {
+.success__text {
     margin: 0;
 }
 
-/* Действия формы */
-.form-actions {
+/**
+ * HERO-СЕКЦИЯ: фон с градиентным оверлеем
+ */
+.hero {
+    position: relative;
+    min-height: 400px;
     display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"><rect fill="%23f0f0f0" width="1200" height="400"/></svg>');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-bg);
+    text-align: center;
+    padding: var(--space-2xl);
 }
 
-.form-actions button {
-    flex: 1;
+.hero__title {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-bg);
 }
 
-/* Кнопка открытия формы */
-button[type="button"]:not([id="closeDialog"]) {
-    background: #0a84ff;
-    color: #fff;
+.hero__text {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/**
+ * MEDIA: контейнер для видео с aspect-ratio
+ * MDN: https://developer.mozilla.org/ru/docs/Web/CSS/aspect-ratio
+ */
+.media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+}
+
+.media__video,
+.media__iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
 }
 
-button[type="button"]:not([id="closeDialog"]):hover {
-    filter: brightness(0.95);
+/**
+ * RESPONSIVE ИЗОБРАЖЕНИЕ: используем srcset и sizes
+ */
+.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-button[type="button"][id="closeDialog"] {
-    background: #f5f5f5;
-    color: #333;
-    border: 1px solid #c8c8c8;
+/**
+ * ОСНОВНОЙ КОНТЕЙНЕР
+ */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-xl);
 }
 
+.section {
+    margin-bottom: var(--space-2xl);
+}
+
+.footer {
+    background-color: var(--color-bg-secondary);
+    padding: var(--space-xl);
+    text-align: center;
+    margin-top: var(--space-2xl);
+}
+
+.footer__text {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+}
