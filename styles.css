@@ -56,7 +56,28 @@ body {
     font-size: var(--font-size-base);
     line-height: var(--line-height);
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/**
+ * КОНТЕЙНЕР СТРАНИЦЫ: CSS Grid для основного макета
+ * ИЗМЕНЕНИЕ: Добавили CSS Grid для семантических областей
+ */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* Новое: Сеточный макет для семантических областей */
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
 }
 
 /**
@@ -97,16 +118,26 @@ img {
 
 /**
  * БЭМ: Блок HEADER
+ * ИЗМЕНЕНИЕ: Привязка к области сетки
  */
 .header {
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--space-md) var(--space-xl);
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+    padding: var(--space-xl);
+    /* Новое: Привязка к области сетки */
+    grid-area: header;
+}
+
+.header h1 {
+    color: white;
+    margin-bottom: var(--space-md);
+    font-size: 2rem;
 }
 
 .header__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -115,54 +146,62 @@ img {
 .header__logo {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: white;
 }
 
 .header__logo:hover {
-    color: var(--color-primary);
+    color: #4facfe;
 }
 
 /**
  * БЭМ: Блок NAV (навигация)
+ * ИЗМЕНЕНИЕ: Привязка к области сетки и Flexbox
  */
 .nav {
-    display: flex;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: var(--space-md);
+    /* Новое: Привязка к области сетки */
+    grid-area: nav;
 }
 
 .nav__list {
     display: flex;
     list-style: none;
     gap: var(--space-lg);
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
-/* .nav__item - элемент списка навигации, стили применяются через .nav__link */
 
 .nav__link {
     padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     transition: background-color 0.2s, color 0.2s;
+    color: white;
 }
 
 .nav__link:hover {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .nav__link:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid white;
     outline-offset: 2px;
 }
 
 /* Активный пункт навигации */
 .nav__link--active {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .nav__link--active:hover {
-    background-color: var(--color-primary-hover);
-    color: var(--color-bg);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
 }
+
+/* .nav__item - элемент списка навигации, стили применяются через .nav__link */
 
 /**
  * БЭМ: Блок BREADCRUMBS (хлебные крошки)
@@ -436,25 +475,147 @@ img {
 
 /**
  * ОСНОВНОЙ КОНТЕЙНЕР
+ * ИЗМЕНЕНИЕ: Привязка к области сетки
  */
 .main {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: var(--space-xl);
+    /* Новое: Привязка к области сетки */
+    grid-area: main;
 }
 
 .section {
     margin-bottom: var(--space-2xl);
 }
 
-.footer {
-    background-color: var(--color-bg-secondary);
-    padding: var(--space-xl);
-    text-align: center;
+/**
+ * СЕКЦИЯ "ОБО МНЕ"
+ */
+.about-me {
+    margin-bottom: var(--space-2xl);
+}
+
+.about-me h2 {
+    font-size: 1.75rem;
+    color: #2c3e50;
+    margin-bottom: var(--space-md);
+}
+
+/**
+ * ИЗМЕНЕНИЕ: Добавили CSS Grid для карточек опыта
+ */
+.experience-section {
     margin-top: var(--space-2xl);
 }
 
+.section-title {
+    font-size: 1.75rem;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    font-weight: 300;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+}
+
+.experience-card {
+    background: white;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #667eea;
+    transition: transform 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateX(5px);
+}
+
+.experience-title {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin: 0 0 var(--space-sm) 0;
+    font-weight: 600;
+}
+
+.experience-desc {
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/**
+ * ИЗМЕНЕНИЕ: Добавили CSS Grid для навыков
+ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+    padding: var(--space-xl);
+    margin-top: var(--space-2xl);
+    /* Новое: Привязка к области сетки */
+    grid-area: footer;
+}
+
 .footer__text {
-    color: var(--color-text-secondary);
+    color: white;
     margin-bottom: var(--space-sm);
+}
+
+/**
+ * АДАПТИВНОСТЬ: Медиа-запросы для мобильных устройств
+ */
+@media (max-width: 768px) {
+    .nav__list {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main {
+        padding: var(--space-md);
+    }
+    
+    .hero__title {
+        font-size: 2rem;
+    }
+    
+    .hero__text {
+        font-size: 1rem;
+    }
 }

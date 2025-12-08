@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="styles.css">
 </head> 
 <body> 
+    <!-- ИЗМЕНЕНИЕ: Добавили обертку page-container для CSS Grid -->
+    <div class="page-container">
     <header class="header">
-        <div class="header__container">
-            <a href="/" class="header__logo">Rocker Mr.Chinger</a>
-            <!-- Главное меню навигации -->
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
-                    <li class="nav__item"><a href="contacts.html" class="nav__link nav__link--active">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Rocker Mr.Chinger</h1> <!-- Добавили заголовок для семантики -->
     </header>
+    <!-- Главное меню навигации -->
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="contacts.html" class="nav__link nav__link--active">Контакты</a></li>
+        </ul>
+    </nav>
     <main class="main">
         <!-- Простые "хлебные крошки" -->
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
@@ -37,11 +37,11 @@
         </nav>
         <h1>Наши контакты</h1>
         <section class="section">
-            <h2>Соц сети</h2>
+            <h2>Соц сети</h2> <!-- Добавили заголовок для семантики -->
             <p>Ссылки на соц сети...</p>
         </section>
         <section class="section">
-            <h2>Почта</h2>
+            <h2>Почта</h2> <!-- Добавили заголовок для семантики -->
             <p>Тут почта...</p>
         </section>
         <section class="section">
@@ -141,9 +141,11 @@
         </div>
     </main>
     <footer class="footer">
+        <p class="footer__text">Футер</p> <!-- Добавили параграф для семантики -->
         <p class="footer__text">&copy; 2023 Rocker Mr.Chinger. Все права защищены.</p>
         <p class="footer__text">Телефон: +7 (123) 456-78-90</p>
     </footer>
+    </div> <!-- Закрытие page-container -->
     <script src="main.js"></script>
 </body> 
 </html>
