@@ -46,99 +46,81 @@
         </section>
         <section class="section">
             <h2>Связаться с нами</h2>
-            <button id="openContactForm" type="button" class="button button--primary">Открыть форму обратной связи</button>
+            <button id="openContactForm" type="button" class="button button--primary" onclick="contactDialog.showModal()">Связаться с нами</button>
         </section>
         
-        <!-- Модалка с формой обратной связи -->
-        <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
-            <form id="contactForm" class="form" method="dialog" novalidate>
-                <h2 id="dialogTitle" class="modal__title">Форма обратной связи</h2>
-                
-                <div class="form__field">
-                    <label for="email" class="form__label">Email <span class="form__required">*</span></label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        class="form__input"
-                        required 
-                        aria-describedby="email-error"
-                    >
-                    <span id="email-error" class="form__error" role="alert" aria-live="polite"></span>
-                </div>
-                
-                <div class="form__field">
-                    <label for="phone" class="form__label">Телефон <span class="form__required">*</span></label>
-                    <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone" 
-                        class="form__input"
-                        required 
-                        pattern="\+7\s?\(\d{3}\)\s?\d{3}-\d{2}-\d{2}"
-                        title="Формат: +7 (XXX) XXX-XX-XX"
-                        placeholder="+7 (XXX) XXX-XX-XX"
-                        aria-describedby="phone-hint phone-error"
-                    >
-                    <span id="phone-hint" class="form__hint">Формат: +7 (XXX) XXX-XX-XX</span>
-                    <span id="phone-error" class="form__error" role="alert" aria-live="polite"></span>
-                </div>
-                
-                <div class="form__field">
-                    <label for="date" class="form__label">Дата <span class="form__required">*</span></label>
-                    <input 
-                        type="date" 
-                        id="date" 
-                        name="date" 
-                        class="form__input"
-                        required 
-                        aria-describedby="date-error"
-                    >
-                    <span id="date-error" class="form__error" role="alert" aria-live="polite"></span>
-                </div>
-                
-                <div class="form__field">
-                    <label for="subject" class="form__label">Тема обращения <span class="form__required">*</span></label>
-                    <select 
-                        id="subject" 
-                        name="subject" 
-                        class="form__select"
-                        required 
-                        aria-describedby="subject-error"
-                    >
-                        <option value="">Выберите тему</option>
-                        <option value="question">Вопрос</option>
-                        <option value="complaint">Жалоба</option>
-                        <option value="suggestion">Предложение</option>
-                        <option value="other">Другое</option>
-                    </select>
-                    <span id="subject-error" class="form__error" role="alert" aria-live="polite"></span>
-                </div>
-                
-                <div class="form__field">
-                    <label for="message" class="form__label">Сообщение <span class="form__required">*</span></label>
-                    <textarea 
-                        id="message" 
-                        name="message" 
-                        class="form__textarea"
-                        required 
-                        rows="5"
-                        aria-describedby="message-error"
-                    ></textarea>
-                    <span id="message-error" class="form__error" role="alert" aria-live="polite"></span>
-                </div>
-                
-                <div class="form__actions">
-                    <button type="submit" class="button button--primary">Отправить</button>
-                    <button type="button" id="closeDialog" class="button button--secondary">Закрыть</button>
-                </div>
-            </form>
+        <!-- Модальное окно для формы обратной связи -->
+        <dialog id="contactDialog" aria-labelledby="dialogTitle">
+            <div class="modal-header">
+                <h2 id="dialogTitle">Форма обратной связи</h2>
+            </div>
+            <div class="modal-content">
+                <form id="contactForm" method="dialog">
+                    <div class="form-group">
+                        <label for="name">Имя <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="Введите ваше имя"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            required 
+                            placeholder="+7 (XXX) XXX-XX-XX"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Электронная почта <span class="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="example@mail.ru"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Категория обращения <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="technical">Техническая поддержка</option>
+                            <option value="commercial">Коммерческое предложение</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Текст обращения <span class="required">*</span></label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            placeholder="Опишите вашу проблему или вопрос..."
+                        ></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <!-- Кнопка отмены с автоматическим закрытием через form method="dialog" -->
+                        <button type="submit" class="btn btn-secondary">Отмена</button>
+                        <!-- Кнопка отправки с обработкой через JavaScript -->
+                        <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
+                    </div>
+                </form>
+            </div>
         </dialog>
-        
-        <!-- Сообщение об успешной отправке -->
-        <div id="successMessage" class="success" role="alert" aria-live="polite" style="display: none;">
-            <p class="success__text">Спасибо! Ваше сообщение успешно отправлено.</p>
-        </div>
     </main>
     <footer class="footer">
         <p class="footer__text">Футер</p> <!-- Добавили параграф для семантики -->

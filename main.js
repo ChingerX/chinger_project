@@ -37,192 +37,59 @@ if (contactDialog) {
             openContactFormBtn.focus();
         }
     });
-}
-
-// Закрытие модалки по клику на кнопку закрытия
-const closeDialogBtn = document.getElementById('closeDialog');
-if (closeDialogBtn) {
-    closeDialogBtn.addEventListener('click', () => {
-        if (contactDialog) {
-            contactDialog.close();
-            // Фокус вернётся на кнопку открытия через обработчик 'close'
+    
+    // Закрытие модального окна по клику на фон
+    contactDialog.addEventListener('click', function(event) {
+        if (event.target === this) {
+            this.close();
         }
     });
-}
-
-// Валидация формы
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Очищаем предыдущие сообщения об ошибках
-        clearErrorMessages();
-        
-        // Проверка валидности всех полей
-        if (contactForm.reportValidity()) {
-            // Если форма валидна, показываем сообщение об успехе
-            showSuccessMessage();
-            // Очищаем форму
-            contactForm.reset();
-            // Убираем aria-invalid со всех полей
-            formFields?.forEach(field => {
-                field.removeAttribute('aria-invalid');
-            });
-            // Закрываем модалку
-            if (contactDialog) {
-                contactDialog.close();
-            }
-        } else {
-            // Показываем сообщения об ошибках для невалидных полей
-            showValidationErrors();
-        }
-    });
-}
-
-// Функция очистки сообщений об ошибках (БЭМ: .form__error)
-function clearErrorMessages() {
-    const errorMessages = contactForm?.querySelectorAll('.form__error');
-    errorMessages?.forEach(msg => {
-        msg.textContent = '';
-    });
-}
-
-// Функция показа ошибок валидации
-function showValidationErrors() {
-    const fields = contactForm?.querySelectorAll('input, select, textarea');
-    fields?.forEach(field => {
-        const errorId = field.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-        if (errorId) {
-            const errorElement = document.getElementById(errorId);
-            if (errorElement && !field.validity.valid) {
-                errorElement.textContent = field.validationMessage;
-            }
-        }
-    });
-}
-
-// Функция показа сообщения об успехе
-function showSuccessMessage() {
-    const successMessage = document.getElementById('successMessage');
-    if (successMessage) {
-        successMessage.style.display = 'block';
-        // Скрываем сообщение через 5 секунд
-        setTimeout(() => {
-            successMessage.style.display = 'none';
-        }, 5000);
-    }
 }
 
 /**
- * Опциональная маска для телефона (лёгкая маска)
- * Автоматически форматирует ввод в формат +7 (XXX) XXX-XX-XX
+ * Функция для отправки формы (согласно заданию)
  */
-const phoneInput = document.getElementById('phone');
-if (phoneInput) {
-    phoneInput.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
-        
-        // Форматируем номер телефона: +7 (XXX) XXX-XX-XX
-        if (value.length > 0) {
-            if (value[0] === '8') {
-                value = '7' + value.slice(1);
-            }
-            if (value[0] !== '7' && value.length > 0) {
-                value = '7' + value;
-            }
-            
-            let formatted = '+7';
-            if (value.length > 1) {
-                formatted += ' (' + value.slice(1, 4);
-            }
-            if (value.length >= 4) {
-                formatted += ') ' + value.slice(4, 7);
-            }
-            if (value.length >= 7) {
-                formatted += '-' + value.slice(7, 9);
-            }
-            if (value.length >= 9) {
-                formatted += '-' + value.slice(9, 11);
-            }
-            
-            e.target.value = formatted;
-            
-            // Обновляем валидность после форматирования
-            if (value.length === 11) {
-                e.target.removeAttribute('aria-invalid');
-            }
-        } else {
-            e.target.value = '';
-        }
-    });
+function submitForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
     
-    // Валидация телефона при потере фокуса
-    phoneInput.addEventListener('blur', (e) => {
-        const value = e.target.value.replace(/\D/g, '');
-        if (value.length > 0 && value.length !== 11) {
-            e.target.setAttribute('aria-invalid', 'true');
-            const errorId = e.target.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-            if (errorId) {
-                const errorElement = document.getElementById(errorId);
-                if (errorElement) {
-                    errorElement.textContent = 'Введите полный номер телефона в формате +7 (XXX) XXX-XX-XX';
-                }
-            }
-        } else if (value.length === 11) {
-            e.target.removeAttribute('aria-invalid');
-            const errorId = e.target.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-            if (errorId) {
-                const errorElement = document.getElementById(errorId);
-                if (errorElement) {
-                    errorElement.textContent = '';
-                }
-            }
+    const formData = new FormData(form);
+    
+    // Простая валидация
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    
+    // Собираем данные формы
+    const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        category: formData.get('category'),
+        message: formData.get('message')
+    };
+    
+    // В реальном приложении здесь был бы AJAX-запрос
+    console.log('Данные формы:', data);
+    
+    // Показываем уведомление об успешной отправке
+    alert('Спасибо! Ваше обращение отправлено. Мы свяжемся с вами в ближайшее время.');
+    
+    // Закрываем модальное окно
+    if (contactDialog) {
+        contactDialog.close();
+    }
+    
+    // Очищаем форму
+    form.reset();
+}
+
+// Обработка отправки формы через Enter (предотвращаем стандартное поведение)
+if (contactForm) {
+    contactForm.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter' && event.target.type !== 'textarea') {
+            event.preventDefault();
         }
     });
 }
-
-// Обработка валидации для всех полей
-const formFields = contactForm?.querySelectorAll('input, select, textarea');
-if (formFields) {
-    formFields.forEach(field => {
-        field.addEventListener('invalid', (e) => {
-            e.preventDefault(); // Предотвращаем стандартное сообщение
-            e.target.setAttribute('aria-invalid', 'true');
-            const errorId = e.target.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-            if (errorId) {
-                const errorElement = document.getElementById(errorId);
-                if (errorElement) {
-                    errorElement.textContent = e.target.validationMessage;
-                }
-            }
-        });
-        
-        field.addEventListener('input', (e) => {
-            if (e.target.validity.valid) {
-                e.target.removeAttribute('aria-invalid');
-                const errorId = e.target.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-                if (errorId) {
-                    const errorElement = document.getElementById(errorId);
-                    if (errorElement) {
-                        errorElement.textContent = '';
-                    }
-                }
-            }
-        });
-        
-        // Валидация при потере фокуса
-        field.addEventListener('blur', (e) => {
-            if (!e.target.validity.valid) {
-                e.target.setAttribute('aria-invalid', 'true');
-                const errorId = e.target.getAttribute('aria-describedby')?.split(' ').find(id => id.includes('error'));
-                if (errorId) {
-                    const errorElement = document.getElementById(errorId);
-                    if (errorElement) {
-                        errorElement.textContent = e.target.validationMessage;
-                    }
-                }
-            }
-        });
-    });
-}
-
