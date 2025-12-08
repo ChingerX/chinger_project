@@ -12,4 +12,6 @@
 
 ## Ссылки
 - [Публичная страница на GitHub Pages](https://ChingerX.github.io/chinger_project/)
-- [Демо формы обратной связи](https://ChingerX.github.io/chinger_project/contacts.html) 
+- [Демо формы обратной связи](https://ChingerX.github.io/chinger_project/contacts.html)
+
+> **Примечание:** Ссылки будут работать после того, как Pull Request из ветки `dev` в `main` будет смержен, и GitHub Pages обновится (обычно это занимает 1-2 минуты). 
