@@ -9,43 +9,73 @@
     <link rel="stylesheet" href="styles.css">
 </head> 
 <body> 
-    <!-- Шапка сайта --> 
-    <header> 
-        <a href="/">Логотип или название сайта</a> 
-        <!-- Главное меню навигации --> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Главная</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contacts.html">Контакты</a></li> 
-            </ul> 
-        </nav> 
-    </header> 
-    <!-- Уникальное основное содержимое страницы --> 
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1> 
-        <!-- Секция 1 с якорем --> 
-        <section id="services"> 
-            <h2>Наши услуги</h2> 
-            <p>Описание предоставляемых услуг...</p> 
-            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы --> 
-        </section> 
-        <!-- Секция 2 с якорем --> 
-        <section id="portfolio"> 
-            <h2>Портфолио</h2> 
-            <p>Примеры наших работ...</p> 
-        </section> 
-        <!-- Секция 3 с якорем --> 
-        <section id="contacts"> 
-            <h2>Контактная информация</h2> 
-            <p>Наши контакты...</p> 
-    </main> 
-            <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу --> 
-        </section> 
-    <!-- Подвал сайта --> 
-    <footer> 
-        <p>&copy; 2025 Название вашего сайта. Все права защищены.</p> 
-        <p>Телефон: +7 (123) 456-78-90</p> 
-    </footer> 
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="header__container">
+            <a href="/" class="header__logo">Логотип или название сайта</a>
+            <!-- Главное меню навигации -->
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Уникальное основное содержимое страницы -->
+    <main class="main">
+        <!-- Hero-секция с градиентным оверлеем -->
+        <section class="hero">
+            <div>
+                <h1 class="hero__title">Добро пожаловать на наш сайт!</h1>
+                <p class="hero__text">Мы предлагаем качественные услуги и решения для вашего бизнеса</p>
+            </div>
+        </section>
+        
+        <!-- Секция 1 с якорем -->
+        <section id="services" class="section">
+            <h2>Наши услуги</h2>
+            <p>Описание предоставляемых услуг...</p>
+            <!-- Responsive изображение -->
+            <img 
+                src="https://via.placeholder.com/800x400" 
+                srcset="https://via.placeholder.com/400x200 400w, https://via.placeholder.com/800x400 800w, https://via.placeholder.com/1200x600 1200w"
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                alt="Наши услуги"
+                class="responsive-image"
+            >
+            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы -->
+        </section>
+        
+        <!-- Секция 2 с якорем -->
+        <section id="portfolio" class="section">
+            <h2>Портфолио</h2>
+            <p>Примеры наших работ...</p>
+            <!-- Видео с aspect-ratio -->
+            <div class="media">
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Пример видео"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    class="media__iframe"
+                ></iframe>
+            </div>
+        </section>
+        
+        <!-- Секция 3 с якорем -->
+        <section id="contacts" class="section">
+            <h2>Контактная информация</h2>
+            <p>Наши контакты...</p>
+            <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
+        </section>
+    </main>
+    
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <p class="footer__text">&copy; 2025 Название вашего сайта. Все права защищены.</p>
+        <p class="footer__text">Телефон: +7 (123) 456-78-90</p>
+    </footer>
 </body> 
 </html>
