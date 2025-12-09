@@ -178,7 +178,7 @@
                             Мои проекты
                         </h3>
                         <div class="projects-grid">
-                            <article class="card">
+                            <article class="card project-card" onclick="openProjectModal('projectModal1')" style="cursor: pointer;">
                                 <img 
                                     src="https://via.placeholder.com/400x150" 
                                     srcset="https://via.placeholder.com/400x150 400w, https://via.placeholder.com/800x300 800w" 
@@ -199,7 +199,7 @@
                                     </div>
                                 </div>
                             </article>
-                            <article class="card">
+                            <article class="card project-card" onclick="openProjectModal('projectModal2')" style="cursor: pointer;">
                                 <img 
                                     src="https://via.placeholder.com/400x150" 
                                     srcset="https://via.placeholder.com/400x150 400w, https://via.placeholder.com/800x300 800w" 
@@ -219,7 +219,7 @@
                                     </div>
                                 </div>
                             </article>
-                            <article class="card">
+                            <article class="card project-card" onclick="openProjectModal('projectModal3')" style="cursor: pointer;">
                                 <img 
                                     src="https://via.placeholder.com/400x150" 
                                     srcset="https://via.placeholder.com/400x150 400w, https://via.placeholder.com/800x300 800w" 
@@ -259,5 +259,129 @@
         </footer>
     </div>
     
+    <!-- Модальные окна проектов -->
+    <dialog id="projectModal1" class="project-modal">
+        <div class="modal-content-wrapper">
+            <div class="modal-header">
+                <h3>Личный сайт</h3>
+                <button onclick="closeProjectModal('projectModal1')" class="modal-close" aria-label="Закрыть">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img 
+                    src="https://via.placeholder.com/800x400" 
+                    srcset="https://via.placeholder.com/400x200 400w, https://via.placeholder.com/800x400 800w" 
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    alt="Скриншот проекта" 
+                    class="responsive-img"
+                    loading="lazy"
+                >
+                <p><strong>Описание:</strong> Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном. Включает информацию о студенте, навыках и проектах.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, Bootstrap, JavaScript</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <a href="https://github.com/ChingerX" class="btn" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i> Исходный код
+                    </a>
+                    <a href="pages/projects.html" class="btn" style="background: #22c55e;">
+                        <i class="bi bi-box-arrow-up-right"></i> Живая версия
+                    </a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <dialog id="projectModal2" class="project-modal">
+        <div class="modal-content-wrapper">
+            <div class="modal-header">
+                <h3>Todo приложение</h3>
+                <button onclick="closeProjectModal('projectModal2')" class="modal-close" aria-label="Закрыть">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img 
+                    src="https://via.placeholder.com/800x400" 
+                    srcset="https://via.placeholder.com/400x200 400w, https://via.placeholder.com/800x400 800w" 
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    alt="Скриншот проекта" 
+                    class="responsive-img"
+                    loading="lazy"
+                >
+                <p><strong>Описание:</strong> Приложение для управления задачами с использованием JavaScript и LocalStorage для сохранения данных.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, JavaScript, LocalStorage</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <a href="https://github.com/ChingerX" class="btn" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i> Исходный код
+                    </a>
+                    <a href="pages/projects.html" class="btn" style="background: #22c55e;">
+                        <i class="bi bi-box-arrow-up-right"></i> Живая версия
+                    </a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <dialog id="projectModal3" class="project-modal">
+        <div class="modal-content-wrapper">
+            <div class="modal-header">
+                <h3>Интернет-магазин</h3>
+                <button onclick="closeProjectModal('projectModal3')" class="modal-close" aria-label="Закрыть">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img 
+                    src="https://via.placeholder.com/800x400" 
+                    srcset="https://via.placeholder.com/400x200 400w, https://via.placeholder.com/800x400 800w" 
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    alt="Скриншот проекта" 
+                    class="responsive-img"
+                    loading="lazy"
+                >
+                <p><strong>Описание:</strong> Прототип интернет-магазина с корзиной товаров, фильтрацией и интеграцией с API.</p>
+                <p><strong>Технологии:</strong> React, API, JavaScript</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <a href="https://github.com/ChingerX" class="btn" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i> Исходный код
+                    </a>
+                    <a href="goods.html" class="btn" style="background: #22c55e;">
+                        <i class="bi bi-box-arrow-up-right"></i> Живая версия
+                    </a>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    
+    <script>
+        // Функции для открытия и закрытия модальных окон
+        function openProjectModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.showModal();
+                document.body.style.overflow = 'hidden'; // Блокируем скролл фона
+            }
+        }
+        
+        function closeProjectModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.close();
+                document.body.style.overflow = ''; // Восстанавливаем скролл
+            }
+        }
+        
+        // Закрытие модального окна при клике на backdrop
+        document.querySelectorAll('.project-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.close();
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Закрытие модального окна по клавише Esc (работает автоматически для dialog)
+        document.querySelectorAll('.project-modal').forEach(modal => {
+            modal.addEventListener('close', () => {
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </body>
 </html>
