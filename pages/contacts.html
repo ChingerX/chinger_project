@@ -2,14 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Контакты - Чиркин Александр</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/a11y.css">
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
 </head>
 <body class="bg-light">
+    <!-- Skip link для клавиатурной навигации -->
+    <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
+    
     <div class="container-fluid p-0">
         <!-- Header -->
         <header class="bg-primary text-white py-4">
@@ -27,36 +31,44 @@
         </header>
         
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Основная навигация">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button 
+                    class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Переключить навигацию"
+                >
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">
-                                <i class="bi bi-house me-1"></i>Главная
+                            <a class="nav-link" href="../index.html" aria-label="Перейти на главную страницу">
+                                <i class="bi bi-house me-1" aria-hidden="true"></i>Главная
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="projects.html">
-                                <i class="bi bi-folder-fill me-1"></i>Проекты
+                            <a class="nav-link" href="projects.html" aria-label="Перейти к проектам">
+                                <i class="bi bi-folder-fill me-1" aria-hidden="true"></i>Проекты
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="diary.html">
-                                <i class="bi bi-journal-text me-1"></i>Учебный дневник
+                            <a class="nav-link" href="diary.html" aria-label="Перейти к учебному дневнику">
+                                <i class="bi bi-journal-text me-1" aria-hidden="true"></i>Учебный дневник
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="contacts.html">
-                                <i class="bi bi-telephone me-1"></i>Контакты
+                            <a class="nav-link active" href="contacts.html" aria-current="page" aria-label="Текущая страница - Контакты">
+                                <i class="bi bi-telephone me-1" aria-hidden="true"></i>Контакты
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="responsive-images-demo.html">
-                                <i class="bi bi-image me-1"></i>Адаптивные изображения
+                            <a class="nav-link" href="responsive-images-demo.html" aria-label="Перейти к демо адаптивных изображений">
+                                <i class="bi bi-image me-1" aria-hidden="true"></i>Адаптивные изображения
                             </a>
                         </li>
                     </ul>
@@ -65,161 +77,205 @@
         </nav>
         
         <!-- Main Content -->
-        <main class="container my-4">
+        <main id="main-content" class="container my-4">
             <div class="mb-4">
                 <h2 class="h3 mb-2">
-                    <i class="bi bi-telephone-fill text-primary me-2"></i>
+                    <i class="bi bi-telephone-fill text-primary me-2" aria-hidden="true"></i>
                     Контакты
                 </h2>
                 <p class="text-muted">Свяжитесь со мной</p>
             </div>
             
-            <div class="row g-4">
-                <!-- Contact Info -->
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="bi bi-envelope-fill text-primary me-2"></i>
-                                Электронная почта
-                            </h5>
-                            <p class="card-text">
-                                <a href="mailto:chingerx@mail.ru" class="text-decoration-none">chingerx@mail.ru</a>
-                            </p>
+            <!-- Contact Information Cards -->
+            <section aria-labelledby="contact-info-heading">
+                <h3 id="contact-info-heading" class="visually-hidden">Контактная информация</h3>
+                <div class="row g-4">
+                    <!-- Contact Info -->
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h4 class="card-title h5">
+                                    <i class="bi bi-envelope-fill text-primary me-2" aria-hidden="true"></i>
+                                    Электронная почта
+                                </h4>
+                                <p class="card-text">
+                                    <a href="mailto:chingerx@mail.ru" class="text-decoration-none" aria-label="Отправить письмо на chingerx@mail.ru">chingerx@mail.ru</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h4 class="card-title h5">
+                                    <i class="bi bi-github text-primary me-2" aria-hidden="true"></i>
+                                    GitHub
+                                </h4>
+                                <p class="card-text">
+                                    <a href="https://github.com/ChingerX" class="text-decoration-none" target="_blank" rel="noopener noreferrer" aria-label="Открыть профиль ChingerX на GitHub в новой вкладке">ChingerX</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h4 class="card-title h5">
+                                    <i class="bi bi-geo-alt-fill text-primary me-2" aria-hidden="true"></i>
+                                    Местоположение
+                                </h4>
+                                <p class="card-text">Москва, Россия</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="bi bi-github text-primary me-2"></i>
-                                GitHub
-                            </h5>
-                            <p class="card-text">
-                                <a href="https://github.com/ChingerX" class="text-decoration-none" target="_blank">ChingerX</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
-                                Местоположение
-                            </h5>
-                            <p class="card-text">Москва, Россия</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
             
             <!-- Contact Form -->
-            <div class="card shadow-sm mt-4">
-                <div class="card-header bg-light">
-                    <h3 class="card-title h5 mb-0">
-                        <i class="bi bi-chat-dots-fill text-primary"></i>
-                        Форма обратной связи
-                    </h3>
+            <section aria-labelledby="contact-form-heading" class="mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h3 id="contact-form-heading" class="card-title h5 mb-0">
+                            <i class="bi bi-chat-dots-fill text-primary" aria-hidden="true"></i>
+                            Форма обратной связи
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Живой регион для сообщений об ошибках и успехе -->
+                        <div id="form-messages" class="visually-hidden" aria-live="polite" aria-atomic="true" role="status"></div>
+                        
+                        <form id="contactForm" novalidate aria-label="Форма обратной связи">
+                            <!-- Группа полей: Личная информация -->
+                            <fieldset class="mb-4">
+                                <legend class="visually-hidden">Личная информация</legend>
+                                
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">
+                                        Имя 
+                                        <span class="text-danger" aria-label="обязательное поле">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="name" 
+                                        name="name" 
+                                        required 
+                                        aria-required="true"
+                                        aria-invalid="false"
+                                        aria-describedby="name-error name-hint"
+                                        placeholder="Введите ваше имя"
+                                        autocomplete="name"
+                                    >
+                                    <div id="name-hint" class="form-text visually-hidden">
+                                        Введите ваше полное имя
+                                    </div>
+                                    <div id="name-error" class="invalid-feedback" role="alert" aria-live="polite">
+                                        Пожалуйста, введите ваше имя.
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        Email адрес 
+                                        <span class="text-danger" aria-label="обязательное поле">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        class="form-control" 
+                                        id="email" 
+                                        name="email" 
+                                        required 
+                                        aria-required="true"
+                                        aria-invalid="false"
+                                        aria-describedby="email-error email-hint"
+                                        placeholder="example@mail.ru"
+                                        autocomplete="email"
+                                    >
+                                    <div id="email-hint" class="form-text visually-hidden">
+                                        Введите корректный email адрес
+                                    </div>
+                                    <div id="email-error" class="invalid-feedback" role="alert" aria-live="polite">
+                                        Пожалуйста, введите корректный email адрес.
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <!-- Группа полей: Сообщение -->
+                            <fieldset class="mb-4">
+                                <legend class="visually-hidden">Текст сообщения</legend>
+                                
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">
+                                        Текст сообщения 
+                                        <span class="text-danger" aria-label="обязательное поле">*</span>
+                                    </label>
+                                    <textarea 
+                                        class="form-control" 
+                                        id="message" 
+                                        name="message" 
+                                        rows="5" 
+                                        required 
+                                        aria-required="true"
+                                        aria-invalid="false"
+                                        aria-describedby="message-error message-hint"
+                                        placeholder="Введите ваше сообщение..."
+                                        autocomplete="off"
+                                    ></textarea>
+                                    <div id="message-hint" class="form-text visually-hidden">
+                                        Опишите ваш вопрос или предложение
+                                    </div>
+                                    <div id="message-error" class="invalid-feedback" role="alert" aria-live="polite">
+                                        Пожалуйста, введите текст сообщения.
+                                    </div>
+                                </div>
+                            </fieldset>
+                            
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-primary"
+                                    aria-describedby="submit-hint"
+                                >
+                                    <i class="bi bi-send-fill me-1" aria-hidden="true"></i>
+                                    <span>Отправить сообщение</span>
+                                </button>
+                                <button 
+                                    type="reset" 
+                                    class="btn btn-secondary"
+                                    aria-label="Очистить форму"
+                                >
+                                    <i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>
+                                    <span>Очистить</span>
+                                </button>
+                            </div>
+                            <div id="submit-hint" class="visually-hidden">
+                                Нажмите Enter для отправки формы или Tab для перехода к следующему полю
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form id="contactForm" novalidate>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Имя <span class="text-danger">*</span></label>
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                id="name" 
-                                name="name" 
-                                required 
-                                placeholder="Введите ваше имя"
-                                style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: all 0.3s ease;"
-                                onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37, 99, 235, 0.1)';"
-                                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
-                            >
-                            <div class="invalid-feedback">Пожалуйста, введите ваше имя.</div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email адрес <span class="text-danger">*</span></label>
-                            <input 
-                                type="email" 
-                                class="form-control" 
-                                id="email" 
-                                name="email" 
-                                required 
-                                placeholder="example@mail.ru"
-                                style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: all 0.3s ease;"
-                                onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37, 99, 235, 0.1)';"
-                                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
-                            >
-                            <div class="invalid-feedback">Пожалуйста, введите корректный email адрес.</div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Текст сообщения <span class="text-danger">*</span></label>
-                            <textarea 
-                                class="form-control" 
-                                id="message" 
-                                name="message" 
-                                rows="5" 
-                                required 
-                                placeholder="Введите ваше сообщение..."
-                                style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: all 0.3s ease; resize: vertical; min-height: 120px;"
-                                onfocus="this.style.borderColor='#2563eb'; this.style.boxShadow='0 0 0 3px rgba(37, 99, 235, 0.1)';"
-                                onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none';"
-                            ></textarea>
-                            <div class="invalid-feedback">Пожалуйста, введите текст сообщения.</div>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-send-fill me-1"></i>Отправить сообщение
-                        </button>
-                    </form>
-                </div>
-            </div>
+            </section>
         </main>
         
         <!-- Footer -->
-        <footer class="bg-dark text-white py-4 mt-5">
+        <footer class="bg-dark text-white py-4 mt-5" role="contentinfo">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <p class="mb-0">&copy; 2025 Чиркин Александр. Все права защищены.</p>
                     </div>
-                    <div class="col-md-6 text-md-end">
-                        <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
-                        <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
-                    </div>
+                    <nav class="col-md-6 text-md-end" aria-label="Дополнительная навигация">
+                        <a href="contacts.html" class="text-white text-decoration-none me-3" aria-label="Текущая страница - Контакты">Контакты</a>
+                        <a href="#" class="text-white text-decoration-none" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
+                    </nav>
                 </div>
             </div>
         </footer>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Валидация формы
-        (function() {
-            'use strict';
-            const form = document.getElementById('contactForm');
-            
-            form.addEventListener('submit', function(event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                } else {
-                    event.preventDefault();
-                    alert('Спасибо! Ваше сообщение отправлено. Я свяжусь с вами в ближайшее время.');
-                    form.reset();
-                    form.classList.remove('was-validated');
-                }
-                form.classList.add('was-validated');
-            }, false);
-        })();
-    </script>
+    <script src="../scripts/a11y-form.js"></script>
 </body>
 </html>
-
