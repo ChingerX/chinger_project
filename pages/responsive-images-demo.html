@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Адаптивные изображения - Демо</title>
+    <link rel="stylesheet" href="../styles/responsive-images.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Адаптивные изображения</h1>
+            <p class="header__subtitle">Демонстрация современных техник</p>
+        </header>
+        
+        <main class="main">
+            <!-- Секция 1: Простое адаптивное изображение -->
+            <section class="section">
+                <h2 class="section__title">1. Базовое адаптивное изображение</h2>
+                <div class="image-container">
+                    <img 
+                        src="https://via.placeholder.com/1200x600" 
+                        srcset="https://via.placeholder.com/400x200 400w, https://via.placeholder.com/800x400 800w, https://via.placeholder.com/1200x600 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                        alt="Красивый пейзаж с горами и озером"
+                        class="responsive-image"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>Изображение занимает 100% ширины контейнера</li>
+                        <li>Высота автоматически рассчитывается для сохранения пропорций</li>
+                        <li>Работает на всех устройствах</li>
+                        <li>Используется srcset для загрузки оптимального размера</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 2: Picture element с разными форматами -->
+            <section class="section">
+                <h2 class="section__title">2. Picture element с разными форматами</h2>
+                <div class="image-container">
+                    <picture>
+                        <source srcset="https://via.placeholder.com/600x800.webp" type="image/webp">
+                        <source srcset="https://via.placeholder.com/600x800" type="image/jpeg">
+                        <img 
+                            src="https://via.placeholder.com/600x800" 
+                            alt="Портретное изображение" 
+                            class="responsive-image"
+                            loading="lazy"
+                        >
+                    </picture>
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>Браузер выбирает WebP если поддерживает, иначе JPEG</li>
+                        <li>Автоматическая оптимизация формата</li>
+                        <li>Меньший размер файла при сохранении качества</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 3: Разные изображения для разных экранов -->
+            <section class="section">
+                <h2 class="section__title">3. Разные изображения для разных экранов</h2>
+                <div class="image-container">
+                    <picture>
+                        <source media="(min-width: 1200px)" srcset="https://via.placeholder.com/1920x1080">
+                        <source media="(min-width: 768px)" srcset="https://via.placeholder.com/1024x768">
+                        <img 
+                            src="https://via.placeholder.com/768x1024" 
+                            alt="Адаптивное изображение" 
+                            class="responsive-image"
+                            loading="lazy"
+                        >
+                    </picture>
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>На десктопе (≥1200px) загружается широкое изображение</li>
+                        <li>На планшете (≥768px) загружается среднее изображение</li>
+                        <li>На мобильном загружается портретное изображение</li>
+                        <li>Экономия трафика и улучшение производительности</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 4: Retina display поддержка -->
+            <section class="section">
+                <h2 class="section__title">4. Retina display поддержка</h2>
+                <div class="image-container" style="text-align: center;">
+                    <img 
+                        src="https://via.placeholder.com/100x100" 
+                        srcset="https://via.placeholder.com/100x100 1x, https://via.placeholder.com/200x200 2x" 
+                        alt="Иконка с поддержкой Retina"
+                        class="retina-image"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>На обычных экранах загружается 1x версия</li>
+                        <li>На Retina-экранах автоматически загружается @2x версия</li>
+                        <li>Четкое отображение на всех устройствах</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 5: Object-fit свойства -->
+            <section class="section">
+                <h2 class="section__title">5. Object-fit свойства</h2>
+                <div class="object-fit-demo">
+                    <div class="object-fit-item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            alt="Cover"
+                            class="object-fit-cover"
+                            loading="lazy"
+                        >
+                        <p><strong>object-fit: cover</strong><br>Заполняет с обрезкой</p>
+                    </div>
+                    <div class="object-fit-item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            alt="Contain"
+                            class="object-fit-contain"
+                            loading="lazy"
+                        >
+                        <p><strong>object-fit: contain</strong><br>Вписывает полностью</p>
+                    </div>
+                    <div class="object-fit-item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            alt="Fill"
+                            class="object-fit-fill"
+                            loading="lazy"
+                        >
+                        <p><strong>object-fit: fill</strong><br>Растягивает</p>
+                    </div>
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li><strong>cover:</strong> Изображение заполняет контейнер, обрезая лишнее</li>
+                        <li><strong>contain:</strong> Изображение вписывается полностью, сохраняя пропорции</li>
+                        <li><strong>fill:</strong> Изображение растягивается, игнорируя пропорции</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 6: Адаптивная галерея -->
+            <section class="section">
+                <h2 class="section__title">6. Адаптивная галерея</h2>
+                <div class="gallery">
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 1"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 2"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 3"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 4"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 5"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 6"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 7"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="gallery__item">
+                        <img 
+                            src="https://via.placeholder.com/400x300" 
+                            srcset="https://via.placeholder.com/400x300 400w, https://via.placeholder.com/800x600 800w"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+                            alt="Галерея 8"
+                            class="gallery__image"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>На десктопе: 4 колонки</li>
+                        <li>На планшете: 2 колонки</li>
+                        <li>На мобильном: 1 колонка</li>
+                        <li>Автоматическое перестроение сетки при изменении размера экрана</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 7: Адаптивные формы -->
+            <section class="section">
+                <h2 class="section__title">7. Адаптивные формы</h2>
+                <form class="responsive-form">
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </form>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>Поля формы адаптируются под ширину экрана</li>
+                        <li>На мобильных устройствах поля занимают 100% ширины</li>
+                        <li>На десктопе поля имеют оптимальную ширину</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Секция 8: Адаптивные таблицы -->
+            <section class="section">
+                <h2 class="section__title">8. Адаптивные таблицы</h2>
+                <div class="table-wrapper">
+                    <table class="responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Проект</th>
+                                <th>Технологии</th>
+                                <th>Статус</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Проект">Личный сайт</td>
+                                <td data-label="Технологии">HTML, CSS, Bootstrap</td>
+                                <td data-label="Статус">Завершен</td>
+                                <td data-label="Дата">2025-01-15</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Проект">Todo приложение</td>
+                                <td data-label="Технологии">JavaScript, LocalStorage</td>
+                                <td data-label="Статус">В разработке</td>
+                                <td data-label="Дата">2025-01-20</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Проект">Интернет-магазин</td>
+                                <td data-label="Технологии">React, API</td>
+                                <td data-label="Статус">Завершен</td>
+                                <td data-label="Дата">2025-01-25</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="explanation">
+                    <h3>Что происходит:</h3>
+                    <ul>
+                        <li>На десктопе: таблица отображается полностью</li>
+                        <li>На мобильных: таблица становится карточками</li>
+                        <li>Горизонтальный скролл на средних экранах</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Измените размер окна браузера чтобы увидеть адаптивность в действии!</p>
+            <p><a href="../index.html" style="color: var(--primary-color);">Вернуться на главную</a></p>
+        </footer>
+    </div>
+</body>
+</html>
+
