@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Чиркин Александр</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-light">
+    <div class="container-fluid p-0">
+        <!-- Header -->
+        <header class="bg-primary text-white py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="h3 mb-1">Чиркин Александр</h1>
+                        <p class="mb-0 opacity-75">Студент разработчик</p>
+                    </div>
+                    <div class="col-auto">
+                        <span class="badge bg-light text-primary">ЭФБО-09-24</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="bi bi-house me-1"></i>Главная
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.html">
+                                <i class="bi bi-folder-fill me-1"></i>Проекты
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="diary.html">
+                                <i class="bi bi-journal-text me-1"></i>Учебный дневник
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contacts.html">
+                                <i class="bi bi-telephone me-1"></i>Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="container my-4">
+            <div class="mb-4">
+                <h2 class="h3 mb-2">
+                    <i class="bi bi-telephone-fill text-primary me-2"></i>
+                    Контакты
+                </h2>
+                <p class="text-muted">Свяжитесь со мной</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Contact Info -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                Электронная почта
+                            </h5>
+                            <p class="card-text">
+                                <a href="mailto:chingerx@mail.ru" class="text-decoration-none">chingerx@mail.ru</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-github text-primary me-2"></i>
+                                GitHub
+                            </h5>
+                            <p class="card-text">
+                                <a href="https://github.com/ChingerX" class="text-decoration-none" target="_blank">ChingerX</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                Местоположение
+                            </h5>
+                            <p class="card-text">Москва, Россия</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="card shadow-sm mt-4">
+                <div class="card-header bg-light">
+                    <h3 class="card-title h5 mb-0">
+                        <i class="bi bi-chat-dots-fill text-primary"></i>
+                        Форма обратной связи
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form id="contactForm" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Имя <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Введите ваше имя">
+                            <div class="invalid-feedback">Пожалуйста, введите ваше имя.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email адрес <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="example@mail.ru">
+                            <div class="invalid-feedback">Пожалуйста, введите корректный email адрес.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Текст сообщения <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
+                            <div class="invalid-feedback">Пожалуйста, введите текст сообщения.</div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send-fill me-1"></i>Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2025 Чиркин Александр. Все права защищены.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+                        <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Валидация формы
+        (function() {
+            'use strict';
+            const form = document.getElementById('contactForm');
+            
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    event.preventDefault();
+                    alert('Спасибо! Ваше сообщение отправлено. Я свяжусь с вами в ближайшее время.');
+                    form.reset();
+                    form.classList.remove('was-validated');
+                }
+                form.classList.add('was-validated');
+            }, false);
+        })();
+    </script>
+</body>
+</html>
+
