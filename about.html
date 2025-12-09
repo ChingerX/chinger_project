@@ -8,7 +8,11 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> 
     <link rel="stylesheet" href="styles.css"> 
 </head> 
-<body> 
+<body>
+    <!-- Переключатель темы -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+    </button> 
     <!-- ИЗМЕНЕНИЕ: Добавили обертку page-container для CSS Grid -->
     <div class="page-container">
     <header class="header">
@@ -51,5 +55,6 @@
         <p class="footer__text">Телефон: +7 (123) 456-78-90</p>
     </footer>
     </div> <!-- Закрытие page-container -->
+    <script src="theme-toggle.js"></script>
 </body> 
 </html>
